@@ -8,7 +8,6 @@ class Player
 
 	def initialize
 		@hand = []
-		@busted = false
 	end
 
 	def total
@@ -45,8 +44,8 @@ class Player
 	end
 
 #	def to_s
-#		"#{self.hand}, #{self.total}"
-#	end
+ #   "#{self.hand} (#{self.total})"
+ #	 end	
 end
 
 class User < Player

@@ -63,9 +63,11 @@ class Game
 	end
 
 	def new_turn_dealer
-		unless (@dealer.total >= 17)
+		if (@dealer.total < 17)
 			@dealer.hand << @deck.pop
+			unless @dealer.busted?
 			new_turn_dealer
+			end
 		end
 	end
 
@@ -73,6 +75,7 @@ class Game
 		if @user.busted? && !@dealer.busted?
 			puts
 			puts "Bummer...you busted."
+			puts
 		end
 
 		if @user.blackjack? && !dealer.blackjack?
@@ -84,13 +87,18 @@ class Game
 			puts
 			puts "YOU WIN!"
 			puts
-		elsif @user.total == @dealer.total
+		elsif @user.total == @dealer.total && @user.total < 22
 			puts
 			puts "You and the dealer tie."
 			puts 
 		elsif @dealer.busted? && @user.busted?
+			if @dealer.total > 21
 			puts "You both busted...push."
 			puts
+			else
+			puts "You lose :( Game over!"
+				puts
+			end
 		else
 			puts "You lose :( Game over!"
 		end

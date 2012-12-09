@@ -19,7 +19,7 @@ class Deck < Array
 	class Card < Hash
 
 		def soft_ace?
-			self[:card] == 'ace' && self[:value] == 11
+			self[:card] == 'Ace' && self[:value] == 11
 		end
 
 		def to_s	
